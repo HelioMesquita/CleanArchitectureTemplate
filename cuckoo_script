@@ -1,0 +1,18 @@
+# Remember to create Supporting Files folder inside test directory
+INPUT_DIR="${PROJECT_DIR}/${PROJECT_NAME}"
+OUTPUT_FILE="${PROJECT_DIR}/${PROJECT_NAME}Tests/SupportingFiles/Cuckoo.generated.swift"
+echo $INPUT_DIR
+echo $OUTPUT_FILE
+
+HEADER="'${PODS_ROOT}/Cuckoo/run' generate --testable '${PROJECT_NAME}' --output '${OUTPUT_FILE}'"
+
+IFS=$'\n'
+for FILE in `find ${INPUT_DIR} -type f -name "*.swift"`; do
+if grep -q CUCKOO_TESTABLE "${FILE}"; then
+HEADER+=" '${FILE}'"
+echo $FILE
+fi
+done
+
+echo $HEADER
+eval $HEADER

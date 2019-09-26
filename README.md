@@ -1,2 +1,2 @@
 # CustomCleanTemplate
-A clean template with PromiseKit, Cuckoo and Script
+A clean template with PromiseKit, Service Provider (a network layer), Cuckoo and Cuckoo Script
